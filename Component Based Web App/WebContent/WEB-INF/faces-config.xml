@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+
+  <managed-bean>
+    <managed-bean-name>studentDetails</managed-bean-name>
+    <managed-bean-class>
+      homework3.StudentDetails
+    </managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+ <navigation-rule> 
+ 
+     <from-view-id>/SurveyForm.xhtml</from-view-id> 
+     
+     <navigation-case>
+       <from-outcome>SimpleAcknowledgment</from-outcome>
+       <to-view-id>/SimpleAcknowledgment.xhtml</to-view-id> 
+     </navigation-case>
+     <navigation-case>
+       <from-outcome>winner</from-outcome>
+        <to-view-id>/Winner.xhtml</to-view-id> 
+     </navigation-case>
+     <navigation-case>
+       <from-outcome>ListSurvey</from-outcome>
+        <to-view-id>/ListSurvey.xhtml</to-view-id> 
+     </navigation-case>
+</navigation-rule>
+  
+  
+</faces-config>

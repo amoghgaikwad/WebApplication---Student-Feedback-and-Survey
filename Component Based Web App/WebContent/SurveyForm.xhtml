@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+     
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<title>Survey Form Page</title>
+
+</h:head>
+
+<h:body style="background-color:#0A4E57 ;width: 1000px; margin: 0 auto;">
+
+<h:link value="Back to Home Page" outcome="MainClassPage"></h:link>
+
+<h:form>
+
+<h1> Survey Form </h1>
+
+<h:panelGrid columns="4">
+
+	<p:outputLabel value="First Name*" />
+    <p:inputText id="FirstName" value="#{studentDetails.firstName}"  
+                 required="true" 
+                 requiredMessage="Enter First Name"
+                 validatorMessage="Enter only alphabets and should be less than 15 characters.">
+     <f:validateRegex pattern="[a-zA-Z ]*"/>                       
+     <f:validateLength maximum="15"/></p:inputText>
+     <p:message for= "FirstName" /><br />
+
+	<p:outputLabel  value="Last Name*" />
+    <p:inputText id="LastName" value="#{studentDetails.lastName}"  
+                 required="true" 
+                 requiredMessage="Enter Last Name"
+                 validatorMessage="Enter only alphabets and should be less than 15 characters.">
+     <f:validateRegex pattern="[a-zA-Z ]*"/>                       
+     <f:validateLength maximum="15"/></p:inputText>
+     <p:message for= "LastName" /><br />
+  
+
+    <p:outputLabel value="Street Address*" />
+    <p:inputText  id="StreetAddress" value="#{studentDetails.address}"  
+                  required="true"  
+                  requiredMessage="Enter Address" 
+                  validatorMessage = "Enter only alphabets and numbers and should be less than or equal to 30 characters.">
+     <f:validateRegex pattern="[a-zA-Z0-9 ]*"/>
+     <f:validateLength maximum="30"/></p:inputText>
+      <p:message for= "StreetAddress"/><br />
+
+
+    <p:outputLabel id="zipLabel" for="zip" value="Zip*" />
+    <p:inputText  id="zip"
+                  value="#{studentDetails.zip}" 
+                  required="true" 
+                  requiredMessage="Enter the Zip Code" 
+                  validatorMessage = "Zip code must be number and exactly 5 digits">
+         <f:ajax event="keyup" render="city state"/>
+         <f:validateLength minimum="5" maximum="5"/></p:inputText>
+         <p:message for= "zip"/><br />
+
+    <p:outputLabel id="cityLabel" for="city" value="City*" />
+    <p:inputText  id="city" 
+                  value="#{studentDetails.city}" 
+                  required="true" 
+                  requiredMessage="Enter the City" 
+                  validatorMessage = "Enter only alphabets and numbers and should be less than or equal to 30 characters.">
+     <f:validateLength maximum="30"/></p:inputText>
+     <p:message for= "city"  /><br />
+
+
+    <p:outputLabel id="stateLabel" for="state" value="State*" />
+    <p:inputText  id="state"
+     			  value="#{studentDetails.state}" 
+                  required="true" 
+                  requiredMessage="Enter the State" 
+                  validatorMessage = "Enter only alphabets and numbers and should be less than or equal to 30 characters.">
+     <f:validateLength maximum="30"/></p:inputText>
+     <p:message for= "state" /><br />
+
+    <p:outputLabel id="TelePhone" value="Contact*" />
+    <p:inputMask id="TelePhoneMask" value="#{studentDetails.telephone}"
+				  mask="(999) 999-9999"
+				  required="true" 
+				  requiredMessage="Enter telephone number" 
+				  validatorMessage="Telephone must be in given pattern" />
+				  <p:message for= "TelePhoneMask" /><br />
+
+    <p:outputLabel value="Email*" />
+    <p:inputText id="Email"  value ="#{studentDetails.email}" 
+ 				  required="true" 
+ 				  requiredMessage="Enter E-mail" 
+ 				  validatorMessage="Enter in the proper format" >
+    <f:validateRegex pattern="[a-zA-Z0-9._]*@[a-zA-Z0-9.]*.[a-zA-Z0-9]*" /></p:inputText>
+    <p:message for= "Email" /><br />
+ 	
+    <p:outputLabel value="Semester Start Date*" />
+    <p:calendar  id = "endDate" value ="#{studentDetails.date}"  
+				 pattern="MM/dd/yyyy" required="true"
+				requiredMessage="Date must be specified">
+	<f:validator validatorId="dateValidate" />
+	<f:attribute name="startDateComponent" value="#{startDateComponent}" /></p:calendar>
+				<p:message for= "endDate" /><br />        
+
+	<p:outputLabel value="Survey Date*" />
+	<p:calendar id="stdate" 
+				binding="#{startDateComponent}" 
+				value="#{studentDetails.startDate}" pattern="MM/dd/yyyy" 
+				required="true"
+				requiredMessage="Date must be specified"/>
+				<p:message for= "stdate" /><br />     
+				   
+    <p:outputLabel value="What do you like about our University" />
+	<p:selectManyCheckbox id ="checkb" value="#{studentDetails.univ_info}">
+		<f:selectItems value="#{studentDetails.univ_info_options}"></f:selectItems>
+	</p:selectManyCheckbox>
+	<p:message for ="checkb"/><br />
+	
+  	<p:outputLabel value="How did you hear about us :"/>
+    <p:selectOneRadio id= "rdButton" value="#{studentDetails.knowAbout}" >
+       <f:selectItem itemValue="friends" itemLabel="Friends" />
+       <f:selectItem itemValue="television" itemLabel="Television" />  
+       <f:selectItem itemValue="internet" itemLabel="Internet" /> 
+       <f:selectItem itemValue="other" itemLabel="Other" />       
+    </p:selectOneRadio>
+    <p:message for= "rdButton" /><br />
+					
+    <p:outputLabel value="How likely would you recommend our University"/>
+    <p:autoComplete id = "likely" value="#{studentDetails.likelihood}"
+				completeMethod="#{studentDetails.dropdownList}" 
+				forceSelection="true"/>
+				<p:message for= "likely"  /><br />
+
+	<p:outputLabel value="Additional Comments "/>
+    <p:inputText id="comment" value="#{studentDetails.comments}" />
+       		  <p:message for="comment" /><br />
+
+    <p:outputLabel value="Kindly Enter 10 Raffle Numbers (1-100)"/>
+    <p:inputText id="raff" value="#{studentDetails.raffle}" 
+              validatorMessage="Enter raffle data (1-100 only)">
+    </p:inputText>
+               <p:message for="raff" /><br /><br /><br />
+
+<h:commandButton action="#{studentDetails.showData}"  value="Submit"></h:commandButton>
+<h:commandButton value="Cancel" onclick="history.back(); return false;" style="width: 109px; "></h:commandButton>
+
+</h:panelGrid>
+
+</h:form>
+</h:body>
+</html>
+

@@ -1,0 +1,18 @@
+Name :Amogh Gaikwad
+
+Files Included:
+1) .war file containing the student survey form
+2) Source Files
+3) Read-me File
+
+Instructions :
+
+1) Create the Homepage and the Student survey form using eclipse dynamic web project
+2) Export the project into a war file
+3) Connect to the EC2 instance using the ssh client.
+4) Include the private key with changed permissions and once the connection is established deploy the project files into the EC2 Instance.
+5) Copy the files from the home folder to the webapps folder with this command:
+   sudo cp -r SWE645_Homework3..war /home/bitnami/stack/apache-tomcat/webapps
+6) The project is now uploaded and the home page is deployed on the S3 bucket on the cloud and is made publicly accessible.
+7) The project can be accessed using the following link(please click on Assignment2):
+	https://s3.amazonaws.com/amg645/index.html

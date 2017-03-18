@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+ <h:head>
+    <title> Welcome </title>
+    <style type = "text/css">
+    p {
+ 	   font-size: 60px;
+ 	   font-weight: bold;
+ 	   font-style: italic;  
+ 	   color: #101010}
+ 	</style>
+
+</h:head>
+
+<h:body style ="background-color:#0A4E57">
+<p align = "center">
+<span class = "welcome">Welcome
+</span> </p>
+<h:form>
+ 
+<ul>Please Click here to take a survey : 
+<h:commandButton action="SurveyForm" value="Survey"></h:commandButton></ul>
+
+<ul>Please Click here to view all the surveys :
+<h:commandButton action="#{studentDetails.populate}" value="List of Surveys"></h:commandButton> 
+</ul>
+
+</h:form>
+</h:body>
+
+</html>

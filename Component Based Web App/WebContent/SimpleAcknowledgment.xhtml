@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+Name: Amogh Gaikwad
+G-Number : G00979271
+ -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Thank you</title>
+    	<h:link value="MainPage" outcome="MainClassPage"></h:link>
+    </h:head>
+	<h:body style="background-color:#0A4E57 ;width: 1000px; margin: 0 auto;">
+        <h1 align= "center">Thank You</h1>
+        <h1>Your data has been saved</h1>
+          <ul>
+               <li>First name: #{studentDetails.firstName}</li> 
+               <li>Last name: #{studentDetails.lastName}</li> 
+               <li>Mean: #{studentDetails.winner.mean}</li>
+               <li>Standard Deviation: #{studentDetails.winner.sd}</li>
+          </ul>
+    </h:body>
+</html>
+

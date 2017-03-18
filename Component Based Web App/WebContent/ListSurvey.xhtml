@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Show Student Details</title>
+    </h:head>
+<h:body style="background-color:#0A4E57 ;width: 1000px; margin: 0 auto;">
+    	<h:link value="BackToSurvey" outcome="SurveyForm" ></h:link>
+        <h1 align="center">List of all the Surveys</h1>
+        
+        <h:dataTable value="#{studentDetails.studData}" var="student" border="1">
+            <h:column>
+                <f:facet name="header">First name</f:facet>
+                #{student.firstName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Last name</f:facet>
+                #{student.lastName} 
+            </h:column>
+            <h:column>
+                <f:facet name="header">Street</f:facet>
+                #{student.address} 
+            </h:column>
+            <h:column>
+                <f:facet name="header">City</f:facet>
+                #{student.city}
+            </h:column>
+            <h:column>
+                <f:facet name="header">State</f:facet>
+                #{student.state}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Zip</f:facet>
+                #{student.zip}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Telephone</f:facet>
+                #{student.telephone}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{student.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Date</f:facet>
+                #{student.date}
+            </h:column>
+            <h:column>
+                <f:facet name="header">StartDate</f:facet>
+                #{student.startDate}
+            </h:column>          
+            <h:column> 
+                <f:facet name="header">Know About</f:facet>
+                #{student.knowAbout}
+            </h:column><h:column>
+                <f:facet name="header">likelihood</f:facet>
+                #{student.likelihood}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Raffle</f:facet>
+                #{student.raffle}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Comments</f:facet>
+                #{student.comments}
+            </h:column>
+        </h:dataTable> 
+     <!--    <h:outputLabel value="#{studentDetails.showVal}"/>  --> 
+      <!-- <h:outputLink value = "ShowDetails.xhtml"> List Of Surveys </h:outputLink> --> 
+    </h:body>
+</html>
+
